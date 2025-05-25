@@ -1,0 +1,35 @@
+pipeline {
+    agent{
+        label "java"
+    }
+
+    environment {
+        IMAGE_NAME = "ayaahmed123/flask-sample"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/ayaakai/python-sample-vscode-flask-tutorial.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t $IMAGE_NAME .'
+                }
+            }
+        }
+        stage('Push to DockerHub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    script {
+                        sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                        sh 'docker push $IMAGE_NAME'
+                    }
+                }
+            }
+        }
+    }
+}
