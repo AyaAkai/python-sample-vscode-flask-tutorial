@@ -1,6 +1,6 @@
 node {
     env.XYZ = 'ITI ITI ITI'
-    env.IMAGE_NAME = 'ayaahmed123/jenkins-sample'
+    env.IMAGE_NAME = 'ayaahmed123/jenkins-scriptive'
 
     try {
         stage('Build Docker Image') {
