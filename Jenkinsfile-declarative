@@ -1,5 +1,5 @@
 pipeline {
-    main { label 'java' }
+    agent any
 
     environment {
         XYZ = 'ITI ITI ITI'
