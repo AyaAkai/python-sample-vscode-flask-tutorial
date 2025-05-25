@@ -1,4 +1,5 @@
 node {
+    checkout scm
     env.XYZ = 'ITI ITI ITI'
     env.IMAGE_NAME = 'ayaahmed123/jenkins-scriptive'
 
