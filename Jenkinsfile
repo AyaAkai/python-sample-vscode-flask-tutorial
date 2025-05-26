@@ -1,2 +1,2 @@
-@Library('/home/aya/Desktop/project_jenkins/jenkins-shared-library/vars/pipelineLib.groovy') _
+@Library('jenkins-shared-library') _
 pipelineLib()
